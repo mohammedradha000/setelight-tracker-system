@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "rewrites": [
+    {
+      "source": "/api/tle",
+      "destination": "/api/tle-proxy"
+    },
+    {
+      "source": "/fabbeyyy",
+      "destination": "/fabbeyyy.html"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/$1"
+    }
+  ],
+  "framework": "vite"
+}
