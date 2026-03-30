@@ -492,7 +492,7 @@ body::after {
   /* Sat count: moved to bottom, above pass predictor */
   #sat-count {
     top: auto;
-    bottom: 75px;
+    bottom: 120px;
     left: 50%;
     transform: translateX(-50%);
     font-size: 9px;
