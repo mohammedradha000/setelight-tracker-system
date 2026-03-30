@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/tle",
+      "destination": "https://celestrak.org/NORAD/elements/gp.php?GROUP=active&FORMAT=tle"
+    },
+    {
+      "source": "/api/satcat",
+      "destination": "https://celestrak.org/pub/satcat.csv"
+    }
+  ]
+}

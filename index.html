@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Satellite Tracker — Real-Time 3D</title>
+    <link rel="stylesheet" href="./src/style.css">
+</head>
+
+<body>
+    <div id="hud">
+        <button id="menu-btn" class="interactive">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <div id="sidebar" class="hidden interactive">
+            <div class="sidebar-header">
+                <h2>SATELLITE CATALOG</h2>
+                <input type="text" id="sidebar-search" placeholder="FILTER BY NAME, ID, OR COUNTRY...">
+            </div>
+            <div id="sat-list-container">
+                <div id="sat-list"></div>
+            </div>
+        </div>
+
+        <div id="sat-count">TRACKING 0 SATELLITES</div>
+
+        <div id="search-container" class="interactive">
+            <input type="text" id="search-input" placeholder="SEARCH SATELLITES (e.g. STARLINK, ISS)...">
+        </div>
+
+        <div id="passes-container" class="interactive">
+            <h3>PASS OVER MY CITY</h3>
+            <div class="input-group">
+                <input type="text" id="city-input" placeholder="ENTER CITY NAME...">
+                <button id="predict-btn">PREDICT</button>
+            </div>
+            <div id="passes-results" class="hidden">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>SATELLITE</th>
+                            <th>TIME</th>
+                            <th>ELEV</th>
+                        </tr>
+                    </thead>
+                    <tbody id="passes-body"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="info-panel" class="hidden interactive">
+            <button id="close-panel">✕</button>
+            <div class="panel-content">
+                <h2 id="sat-name">---</h2>
+                <div class="stat-row">
+                    <span class="label">NORAD ID</span>
+                    <span id="sat-norad" class="value">---</span>
+                </div>
+                <div class="stat-row">
+                    <span class="label">Altitude</span>
+                    <span id="sat-alt" class="value">--- km</span>
+                </div>
+                <div class="stat-row">
+                    <span class="label">Speed</span>
+                    <span id="sat-speed" class="value">--- km/s</span>
+                </div>
+                <div class="stat-row">
+                    <span class="label">Latitude</span>
+                    <span id="sat-lat" class="value">---°</span>
+                </div>
+                <div class="stat-row">
+                    <span class="label">Longitude</span>
+                    <span id="sat-lon" class="value">---°</span>
+                </div>
+                <div class="stat-row">
+                    <span class="label">Inclination</span>
+                    <span id="sat-inc" class="value">---°</span>
+                </div>
+                <div class="stat-row">
+                    <span class="label">Country</span>
+                    <span id="sat-country" class="value">---</span>
+                </div>
+                <div class="stat-row">
+                    <span class="label">Launch</span>
+                    <span id="sat-launch" class="value">---</span>
+                </div>
+                <div class="stat-row">
+                    <span class="label">Type</span>
+                    <span id="sat-type" class="value">---</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="./src/main.js"></script>
+</body>
+
+</html>
