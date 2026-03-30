@@ -23,10 +23,10 @@ export class Globe {
 
     // Load all textures in parallel
     const [dayMap, nightMap, normalMap, cloudMap] = await Promise.all([
-      loader.loadAsync('textures/earth_daymap.jpg'),
-      loader.loadAsync('textures/earth_nightmap.jpg'),
-      loader.loadAsync('textures/earth_normal.jpg'),
-      loader.loadAsync('textures/earth_clouds.jpg'),
+      loader.loadAsync('./textures/earth_daymap.jpg'),
+      loader.loadAsync('./textures/earth_nightmap.jpg'),
+      loader.loadAsync('./textures/earth_normal.jpg'),
+      loader.loadAsync('./textures/earth_clouds.jpg'),
     ])
 
     this.dayTexture = dayMap
