@@ -163,7 +163,7 @@ animate()
         console.error('Main: Fatal Initialization error:', error)
         const countEl = document.getElementById('sat-count')
         if (countEl) {
-            countEl.textContent = 'RENDERER ERROR'
+            countEl.textContent = `FATAL ERROR: ${error.message || 'Check console'}`
             countEl.style.color = '#ff4444'
         }
     }

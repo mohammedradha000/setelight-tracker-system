@@ -2,6 +2,12 @@ import * as THREE from 'three'
 import { latLonAltToVector3 } from '../utils/coordinates.js'
 import { getSunSubsolarPoint } from '../utils/astronomy.js'
 
+// Import textures for Bullet-Proof production handling
+import dayMapUrl from '../assets/textures/earth_daymap.jpg'
+import nightMapUrl from '../assets/textures/earth_nightmap.jpg'
+import normalMapUrl from '../assets/textures/earth_normal.jpg'
+import cloudMapUrl from '../assets/textures/earth_clouds.jpg'
+
 const EARTH_RADIUS = 1  // all distances in Earth-radii units
 
 export class Globe {
@@ -21,12 +27,12 @@ export class Globe {
   async init() {
     const loader = new THREE.TextureLoader()
 
-    // Load all textures in parallel
+    // Load all textures in parallel using Vite-resolved URLs
     const [dayMap, nightMap, normalMap, cloudMap] = await Promise.all([
-      loader.loadAsync('./textures/earth_daymap.jpg'),
-      loader.loadAsync('./textures/earth_nightmap.jpg'),
-      loader.loadAsync('./textures/earth_normal.jpg'),
-      loader.loadAsync('./textures/earth_clouds.jpg'),
+      loader.loadAsync(dayMapUrl),
+      loader.loadAsync(nightMapUrl),
+      loader.loadAsync(normalMapUrl),
+      loader.loadAsync(cloudMapUrl),
     ])
 
     this.dayTexture = dayMap
