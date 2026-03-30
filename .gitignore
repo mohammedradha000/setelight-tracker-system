@@ -35,3 +35,8 @@ pnpm-debug.log*
 Thumbs.db
 # Documentation
 satellite-tracker-guide.md
+
+# Large Assets and Auto-generated files
+package-lock.json
+public/textures/
+vercel.json
