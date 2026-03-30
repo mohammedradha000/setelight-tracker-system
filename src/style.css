@@ -489,24 +489,23 @@ body::after {
     padding: 10px;
   }
 
-  /* Sat count: smaller, top-left */
+  /* Sat count: moved to bottom, above pass predictor */
   #sat-count {
-    left: 10px;
-    transform: none;
-    font-size: 8px;
+    top: auto;
+    bottom: 75px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 9px;
     letter-spacing: 1px;
-    padding: 4px 8px;
-    max-width: 140px;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    padding: 4px 10px;
   }
 
-  /* Branding: compact, right of sat-count, left of buttons */
+  /* Branding: top-left, clean and compact */
   #branding {
-    right: 100px;
-    left: auto;
+    right: auto;
+    left: 10px;
     transform: none;
-    padding: 4px 8px;
+    padding: 4px 10px;
     background: rgba(0, 10, 20, 0.4);
     border-color: rgba(0, 240, 255, 0.1);
     box-shadow: none;
@@ -517,7 +516,7 @@ body::after {
   }
 
   #branding .name {
-    font-size: 9px;
+    font-size: 10px;
     letter-spacing: 2px;
   }
 
