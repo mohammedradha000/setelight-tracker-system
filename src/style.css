@@ -36,6 +36,7 @@ canvas {
   pointer-events: all;
 }
 
+/* ── Sat Count ── Original: Centered pill at top ── */
 #sat-count {
   position: fixed;
   top: 20px;
@@ -49,8 +50,117 @@ canvas {
   padding: 5px 15px;
   border-radius: 20px;
   border: 1px solid rgba(0, 255, 255, 0.2);
+  white-space: nowrap;
+  z-index: 11;
 }
 
+/* ── Branding ── Top right, next to menu ── */
+#branding {
+  position: fixed;
+  top: 20px;
+  right: 115px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-decoration: none;
+  background: rgba(0, 10, 20, 0.6);
+  border: 1px solid rgba(0, 240, 255, 0.15);
+  padding: 6px 15px;
+  border-radius: 4px;
+  backdrop-filter: blur(8px);
+  z-index: 1001;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+#branding .label {
+  font-size: 8px;
+  letter-spacing: 3px;
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 2px;
+  transition: color 0.3s;
+}
+
+#branding .name {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 4px;
+  color: #00f0ff;
+  text-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
+  transition: all 0.3s;
+}
+
+#branding:hover {
+  background: rgba(0, 20, 40, 0.8);
+  border-color: rgba(0, 240, 255, 0.6);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 240, 255, 0.2);
+}
+
+#branding:hover .label {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+#branding:hover .name {
+  color: #fff;
+  text-shadow: 0 0 15px #00f0ff, 0 0 30px rgba(0, 240, 255, 0.4);
+}
+
+#branding .name::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  background: #00f0ff;
+  transition: width 0.3s;
+  margin-top: 2px;
+}
+
+#branding:hover .name::after {
+  width: 100%;
+}
+
+/* ── Toggle HUD Button ── Top right, before menu ── */
+#toggle-hud {
+  position: fixed;
+  top: 20px;
+  right: 68px;
+  background: rgba(0, 10, 20, 0.8);
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  color: #00f0ff;
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  z-index: 1001;
+}
+
+#toggle-hud svg {
+  width: 20px;
+  height: 20px;
+}
+
+#toggle-hud:hover {
+  border-color: #00f0ff;
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+}
+
+/* ── Cinematic Mode (Hide HUD) ── */
+.hud-hidden #sat-count,
+.hud-hidden #branding,
+.hud-hidden #search-container,
+.hud-hidden #passes-container,
+.hud-hidden #info-panel {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: opacity 0.4s;
+}
+
+/* ── Search Bar ── */
 #search-container {
   margin-top: 40px;
   align-self: center;
@@ -74,6 +184,7 @@ canvas {
   box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
 }
 
+/* ── Info Panel ── Desktop: right sidebar ── */
 #info-panel {
   position: fixed;
   top: 50%;
@@ -130,7 +241,7 @@ canvas {
   font-size: 16px;
 }
 
-/* Pass Predictor Container */
+/* ── Pass Predictor ── */
 #passes-container {
   position: fixed;
   bottom: 24px;
@@ -212,7 +323,7 @@ td {
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-/* Scanline effect */
+/* ── Scanline effect ── */
 body::after {
   content: '';
   position: fixed;
@@ -226,7 +337,7 @@ body::after {
   z-index: 100;
 }
 
-/* Menu Button */
+/* ── Menu Button ── Fixed top-right ── */
 #menu-btn {
   position: fixed;
   top: 20px;
@@ -271,7 +382,7 @@ body::after {
   transform: translateY(-7px) rotate(-45deg);
 }
 
-/* Sidebar */
+/* ── Sidebar ── */
 #sidebar {
   position: fixed;
   top: 0;
@@ -368,69 +479,108 @@ body::after {
   background: rgba(0, 240, 255, 0.3);
 }
 
-/* Branding - Top Right corner */
-#branding {
-  position: fixed;
-  top: 20px;
-  right: 75px; /* Spaced away from menu button */
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  text-decoration: none;
-  background: rgba(0, 10, 20, 0.6);
-  border: 1px solid rgba(0, 240, 255, 0.15);
-  padding: 6px 15px;
-  border-radius: 4px;
-  backdrop-filter: blur(8px);
-  z-index: 1001;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-}
 
-#branding .label {
-  font-size: 8px;
-  letter-spacing: 3px;
-  color: rgba(255, 255, 255, 0.4);
-  margin-bottom: 2px;
-  transition: color 0.3s;
-}
+/* ═══════════════════════════════════════════
+   MOBILE RESPONSIVE — Only kicks in < 768px
+   Desktop is UNTOUCHED above this line.
+   ═══════════════════════════════════════════ */
+@media (max-width: 768px) {
+  #hud {
+    padding: 10px;
+  }
 
-#branding .name {
-  font-size: 13px;
-  font-weight: 800;
-  letter-spacing: 4px;
-  color: #00f0ff;
-  text-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
-  transition: all 0.3s;
-}
+  /* Sat count: smaller, top-left */
+  #sat-count {
+    left: 10px;
+    transform: none;
+    font-size: 9px;
+    letter-spacing: 1px;
+    padding: 4px 10px;
+  }
 
-#branding:hover {
-  background: rgba(0, 20, 40, 0.8);
-  border-color: rgba(0, 240, 255, 0.6);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 240, 255, 0.2);
-}
+  /* Branding: compact, sits between count and buttons */
+  #branding {
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 4px 10px;
+    background: rgba(0, 10, 20, 0.4);
+    border-color: rgba(0, 240, 255, 0.1);
+  }
 
-#branding:hover .label {
-  color: rgba(255, 255, 255, 0.8);
-}
+  #branding .label {
+    display: none;
+  }
 
-#branding:hover .name {
-  color: #fff;
-  text-shadow: 0 0 15px #00f0ff, 0 0 30px rgba(0, 240, 255, 0.4);
-}
+  #branding .name {
+    font-size: 10px;
+    letter-spacing: 2px;
+  }
 
-/* Corporate highlight for Fabbey */
-#branding .name::after {
-  content: '';
-  display: block;
-  width: 0;
-  height: 2px;
-  background: #00f0ff;
-  transition: width 0.3s;
-  margin-top: 2px;
-}
+  /* Toggle HUD: tighter spacing */
+  #toggle-hud {
+    right: 55px;
+    width: 35px;
+    height: 35px;
+  }
 
-#branding:hover .name::after {
-  width: 100%;
+  #menu-btn {
+    width: 35px;
+    height: 35px;
+  }
+
+  /* Search bar: full width */
+  #search-input {
+    width: calc(100vw - 40px);
+    font-size: 12px;
+  }
+
+  /* Info Panel → Bottom Sheet */
+  #info-panel {
+    position: fixed;
+    top: auto;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    transform: translateY(0);
+    border-radius: 20px 20px 0 0;
+    border: none;
+    border-top: 2px solid rgba(0, 240, 255, 0.3);
+    padding: 25px 20px 40px;
+    max-height: 50vh;
+    overflow-y: auto;
+  }
+
+  /* Grab handle for bottom sheet */
+  #info-panel::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+  }
+
+  #info-panel.hidden {
+    opacity: 0;
+    transform: translateY(100%);
+    pointer-events: none;
+  }
+
+  /* Pass predictor: full width */
+  #passes-container {
+    width: calc(100% - 20px);
+    left: 10px;
+    bottom: 10px;
+    padding: 12px;
+  }
+
+  /* Sidebar: full width on mobile */
+  #sidebar {
+    width: 100%;
+  }
 }

@@ -6,6 +6,7 @@ import { showSatelliteInfo, initInfoPanel } from './ui/InfoPanel.js'
 import { createOrbitTrail } from './satellites/OrbitTrail.js'
 import { initPassPredictor } from './ui/PassPredictor.js'
 import { SatelliteList } from './ui/SatelliteList.js'
+import { getActiveBrandingLink } from './config.js'
 
 // Scene
 const scene = new THREE.Scene()
@@ -158,6 +159,10 @@ animate()
         
         initInfoPanel(handleDeselectSatellite)
         initPassPredictor(satManager)
+        
+        // --- HUD Visibility & Branding Sync ---
+        initHUDControls()
+
         console.log('Main: Initialization complete.')
     } catch (error) {
         console.error('Main: Fatal Initialization error:', error)
@@ -199,6 +204,27 @@ document.getElementById('search-input').addEventListener('input', (e) => {
   const results = satManager.satellites.filter(s => s.name.toLowerCase().includes(query))
   satManager.renderer.highlightSatellites(query ? results.map(s => s.noradId) : [])
 })
+
+// HUD UI Controls
+function initHUDControls() {
+    const toggleBtn = document.getElementById('toggle-hud')
+    const branding = document.getElementById('branding')
+    
+    // Set dynamic branding link from Admin config
+    if (branding) {
+        branding.href = getActiveBrandingLink()
+    }
+
+    if (toggleBtn) {
+        toggleBtn.addEventListener('click', () => {
+            document.body.classList.toggle('hud-hidden')
+            
+            // Interaction feedback
+            toggleBtn.style.transform = "scale(0.9)"
+            setTimeout(() => toggleBtn.style.transform = "", 150)
+        })
+    }
+}
 
 // Resize handler
 window.addEventListener('resize', () => {

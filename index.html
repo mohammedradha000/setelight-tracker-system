@@ -10,10 +10,20 @@
 
 <body>
     <div id="hud">
+        <div id="sat-count">TRACKING 0 SATELLITES</div>
+
         <a href="https://github.com/mohammedradha000" target="_blank" id="branding" class="interactive">
             <span class="label">BUILT BY</span>
             <span class="name">FABBEY</span>
         </a>
+
+        <button id="toggle-hud" class="interactive" title="TOGGLE HUD VISIBILITY">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+            </svg>
+        </button>
+
         <button id="menu-btn" class="interactive">
             <span></span>
             <span></span>
@@ -29,8 +39,6 @@
                 <div id="sat-list"></div>
             </div>
         </div>
-
-        <div id="sat-count">TRACKING 0 SATELLITES</div>
 
         <div id="search-container" class="interactive">
             <input type="text" id="search-input" placeholder="SEARCH SATELLITES (e.g. STARLINK, ISS)...">

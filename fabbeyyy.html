@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Satellite Tracker — Command Center</title>
+    <link rel="stylesheet" href="./src/style.css">
+    <link rel="stylesheet" href="./src/admin.css">
+</head>
+<body class="admin-page">
+    <div id="admin-hud">
+        <div id="login-screen" class="hud-panel">
+            <div class="panel-header">
+                <h2>COMMAND AUTHENTICATION</h2>
+                <div class="subtitle">ENCRYPTED CHANNEL SECURED</div>
+            </div>
+            <form id="login-form">
+                <div class="input-group">
+                    <label for="username">ACCESS ID</label>
+                    <input type="text" id="username" placeholder="ENTER USERNAME..." required autocomplete="off">
+                </div>
+                <div class="input-group">
+                    <label for="password">SECURE KEY</label>
+                    <input type="password" id="password" placeholder="ENTER PASSWORD..." required>
+                </div>
+                <button type="submit" id="login-btn" class="interactive">AUTHORIZE</button>
+            </form>
+            <div id="login-error" class="error-msg hidden">ACCESS DENIED: INVALID CREDENTIALS</div>
+        </div>
+
+        <div id="dashboard" class="hud-panel hidden">
+            <div class="panel-header">
+                <h2>ADMIN DASHBOARD</h2>
+                <div class="subtitle">HUD CONFIGURATION SYSTEM</div>
+            </div>
+            
+            <div class="setting-group">
+                <h3>BRANDING CONFIGURATION</h3>
+                <p>Change the destination link of the "Built by Fabbey" button appearing on the main tracker.</p>
+                <div class="input-group">
+                    <label for="link-input">TARGET URL</label>
+                    <input type="url" id="link-input" placeholder="https://..." required>
+                </div>
+                <div class="button-row">
+                    <button id="save-link-btn" class="interactive primary">UPDATE HUD</button>
+                </div>
+            </div>
+
+            <div class="setting-group dev-mode">
+                <h3>DEVELOPER PERSISTENCE</h3>
+                <p>To make this link permanent for all users globally, copy the code below and paste it into your <code>src/config.js</code> file.</p>
+                <div class="code-box">
+                    <pre id="code-snippet">defaultLink: "..."</pre>
+                    <button id="copy-btn" class="interactive mini">COPY CODE</button>
+                </div>
+            </div>
+
+            <div class="panel-footer">
+                <button id="logout-btn" class="interactive logout">TERMINATE SESSION</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="notification" class="hidden">HUD UPDATED SUCCESSFULLY</div>
+
+    <script type="module" src="./src/admin.js"></script>
+</body>
+</html>
