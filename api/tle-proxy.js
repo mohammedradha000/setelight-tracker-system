@@ -1,4 +1,4 @@
-// Vercel Edge Function — runs at the edge, zero cold start
+// Vercel Edge Function — proxies CelesTrak requests to handle CORS
 export const config = { runtime: 'edge' }
 
 const ALLOWED_GROUPS = [
@@ -21,7 +21,7 @@ export default async function handler(req) {
   return new Response(text, {
     headers: {
       'Content-Type': 'text/plain',
-      'Cache-Control': 's-maxage=3600',  // Vercel caches this for 1 hour — saves requests
+      'Cache-Control': 's-maxage=3600',
       'Access-Control-Allow-Origin': '*',
     }
   })
