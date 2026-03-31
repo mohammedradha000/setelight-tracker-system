@@ -1,4 +1,4 @@
-# 🛰️ Satellite Tracker: Technical Architecture & Implementation Guide
+#  Satellite Tracker: Technical Architecture & Implementation Guide
 
 This document provides a comprehensive, step-by-step technical breakdown of how the 3D Satellite Tracker was built, the APIs used, and the mathematical principles behind its real-time synchronization.
 
