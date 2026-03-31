@@ -1,4 +1,3 @@
-// Vercel Edge Function — proxies CelesTrak SATCAT requests
 export const config = { runtime: 'edge' }
 
 export default async function handler(req) {
@@ -14,7 +13,7 @@ export default async function handler(req) {
     return new Response(text, {
       headers: {
         'Content-Type': 'text/csv',
-        'Cache-Control': 's-maxage=86400', // Cache for 24 hours
+        'Cache-Control': 's-maxage=86400', //cache
         'Access-Control-Allow-Origin': '*',
       }
     })
